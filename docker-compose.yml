@@ -1,0 +1,14 @@
+version: "3.8"
+services:
+  node:
+    image: clone
+    container_name: clone-container
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - VIRTUAL_HOST=clone.salt-mine.io
+      - LETSENCRYPT_HOST=clone.salt-mine.io
+      - LETSENCRYPT_EMAIL=olive@salt-mine.io
+    network_mode: "webproxy"
+    restart: always
